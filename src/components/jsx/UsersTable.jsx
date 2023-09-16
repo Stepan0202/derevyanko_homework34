@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/esm/Button';
 function UsersTable(){
     const[users, setUsers] = useState([]);
     async function fetchData(){
@@ -30,6 +31,7 @@ function UsersTable(){
                 <div className="usersTable__header">Phone</div>
                 <div className="usersTable__header">Website</div>
                 <div className="usersTable__header">Company</div>
+                <div className="usersTable__header">Controls</div>
             </div>
           {users.map((user) => (
             <div className="usersTable__row">
@@ -41,6 +43,7 @@ function UsersTable(){
                 <div className="usersTable__item phone">{user.phone ? user.phone : "—"}</div>
                 <div className="usersTable__item website">{user.website ? user.website : "—"}</div>
                 <div className="usersTable__item company">{user.company.name}</div>
+                <div className="usersTable__item"><Button className="btn" variant="danger30per" color="white" id="deleteUser">Delete</Button></div> 
             </div>
           ))}
         </div>

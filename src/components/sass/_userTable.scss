@@ -20,7 +20,7 @@
     }
     &__row{
         display: grid;
-        grid-template-columns: 4% repeat(2, 12%) 15% repeat(4, 12%);
+        grid-template-columns: 4% repeat(2, 12%) 15% repeat(5, 11%);
     }
     &__row:nth-child(even){
         background-color: tint-color(map-get($theme-colors, "light"), 40%);
@@ -29,6 +29,10 @@
     &__item{
         text-align: left;
         padding: 1em 0.5em;
+        .btn{
+            color: black;
+            text-transform: uppercase;
+        }
     }
     &__item:first-child{
         text-align: center;
