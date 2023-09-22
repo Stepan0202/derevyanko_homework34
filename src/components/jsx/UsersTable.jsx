@@ -2,7 +2,12 @@ import {useEffect } from 'react';
 import Button from 'react-bootstrap/esm/Button';
 import fetchUsers from '../js/fetchData';
 function UsersTable({users, setUsers}){
-    
+    function deleteUser(e){
+      const userID = e.target.dataset.userid;
+      const newTable = users.filter(user => user.id != userID);
+      setUsers(newTable);
+      localStorage.setItem('users', JSON.stringify(newTable));
+    }
 
     useEffect(()=>{fetchUsers(setUsers)}, [])
     return (
@@ -25,7 +30,7 @@ function UsersTable({users, setUsers}){
                 <div className="usersTable__item email">{user.email ? user.email : "—"}</div>
                 <div className="usersTable__item phone">{user.phone ? user.phone : "—"}</div>
                 <div className="usersTable__item website">{user.website ? user.website : "—"}</div>
-                <div className="usersTable__item"><Button className="btn" variant="accent3" color="white" id="deleteUser">Delete</Button></div> 
+                <div className="usersTable__item"><Button className="btn" variant="warning" color="white" data-userid={user.id} onClick={deleteUser}>Delete</Button></div> 
             </div>
           ))}
         </div>
